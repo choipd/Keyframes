@@ -82,6 +82,9 @@
     KFVectorAnimationLayer<KFVectorFeatureLayerInterface> *featureLayer;
 
     if (feature.backedImage) {
+        // JTY added code below 2 lines for loading images before use.
+        UIImage *image = [UIImage imageNamed:feature.backedImage];
+        self.imageAssets = @{feature.backedImage: image};
       NSAssert(self->_imageAssets[feature.backedImage] != nil, @"Image asset does not exist");
       featureLayer = [[KFVectorBitmapFeatureLayer alloc] initWithImage:self->_imageAssets[feature.backedImage]];
     } else if (feature.gradientEffect) {
